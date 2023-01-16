@@ -6,7 +6,6 @@ from dotenv import load_dotenv
 from discord.ext import commands
 from requests import get
 from interactions import Client
-import numpy
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -41,7 +40,7 @@ MAPLIST = ["Ascent", "Bind", "Fracture", "Icebox", "Breeze", "Split", "Haven", "
     ],
 )
 async def map_slash(ctx: interactions.CommandContext, map_to_remove : str = ""):
-    theMap = MAPLIST.copy()
+    theMap = list(MAPLIST)
     removeMapList = map_to_remove.split(' ')
     removeMapList = [word.capitalize() for word in removeMapList]
     for i in range(len(removeMapList)):
@@ -84,7 +83,7 @@ async def on_ready():
 
 @bot.command(name='map', brief="Picks a random map", description = "Picks a random map, to delete a map just type the map out followed by a space i.e \n'$map icebox`\nthis will delete icebox out of the list of maps\n\ndoing `$map default` will delete Breeze and Fracture")
 async def randomMap(ctx, *mapToRemove):
-    theMap = MAPLIST.copy()
+    theMap = list(MAPLIST)
     removeMap = ', '.join(mapToRemove)
     removeMapList = removeMap.split(', ')
     removeMapList = [word.capitalize() for word in removeMapList]
