@@ -9,6 +9,7 @@ from interactions import Client
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
+API_KEY = os.getenv('API_KEY')
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix='$', intents=intents)
 slash = interactions.Client(token= TOKEN)
@@ -131,7 +132,7 @@ async def ping(ctx):
 
 @bot.command(name = "yury", brief = "Yury when", description = 'The other day, I got a question about what the "yury when" phrase represents.\n\nFor those who do not know, this phrase was sent in multiple text channels, commonly followed by a gif of a monkey.\n\n"yury when" is an open ended statement.\nA fill in the blank, if you will.\nThe reason the sentence is never finished is to symbolize that no matter what he is doing, Yury will always be "monke," and the activity that he is currently engrossed in has no effect on this.\n\nSo the next time you think of "monke." Find it in yourself to have the courage to say "yury when" Preferably followed by a "monke" gif.\n\nThank you.')
 async def yury(ctx):
-    apikey = "LIVDSRZULELA"
+    apikey = API_KEY
     lmt = 20
     search_term = "monkey"
     r = requests.get("https://g.tenor.com/v1/random?q=%s&key=%s&limit=%s" % (search_term, apikey, lmt))
@@ -170,7 +171,7 @@ async def pooper(ctx):
 
 @bot.command(name = "gif", brief = "Random gif with the name!")
 async def gif(ctx, *randomGif):
-    apikey = "LIVDSRZULELA"
+    apikey = API_KEY
     lmt = 8
     message = ' '.join(randomGif)
     search_term = message
