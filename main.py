@@ -62,7 +62,7 @@ async def randomMap(ctx, *mapToRemove):
 
 @bot.command(name = 'agent', brief = "Picks a random map")
 async def randomAgent(ctx, *agentToRemove):
-    Agents = ["Brimstone", "Viper", "Omen", "Killjoy", "Cypher", "Sova", "Sage", "Phoenix", "Jett", "Reyna", "Raze", "Breach", "Skye", "Yoru", "Astra", "KAY/O", "Chamber", "Neon", "Fade", "Harbor"]
+    Agents = ["Brimstone", "Viper", "Omen", "Killjoy", "Cypher", "Sova", "Sage", "Phoenix", "Jett", "Reyna", "Raze", "Breach", "Skye", "Yoru", "Astra", "KAY/O", "Chamber", "Neon", "Fade", "Harbor", "Deadlock"]
     removeAgent = ', '.join(agentToRemove)
     removeAgentList = removeAgent.split(', ')
     removeAgentList  = [word.capitalize() for word in removeAgentList]
@@ -80,8 +80,6 @@ async def randomAgent(ctx, *agentToRemove):
 @bot.command(name = 'say', brief = "sayyy")
 async def say(ctx, *arg1):
     message = ' '.join(arg1)
-    if ctx.author.id == bot.user.id or "everyone" in message:
-        return;
     await ctx.send(message)
     await ctx.message.delete()
 
