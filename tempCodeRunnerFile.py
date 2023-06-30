@@ -1,3 +1,0 @@
-
-
-client.run(TOKEN)
