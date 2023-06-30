@@ -80,6 +80,8 @@ async def randomAgent(ctx, *agentToRemove):
 @bot.command(name = 'say', brief = "sayyy")
 async def say(ctx, *arg1):
     message = ' '.join(arg1)
+    if ctx.author.id == bot.user.id or "everyone" in message:
+        return;
     await ctx.send(message)
     await ctx.message.delete()
 
